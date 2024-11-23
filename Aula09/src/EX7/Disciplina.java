@@ -44,5 +44,24 @@ public class Disciplina {
                 '}';
     }
 
+    public boolean equals(Object o) {
+        if ( o != null && this.getClass() == o.getClass()){
+            Disciplina d = (Disciplina) o;
+            return codigo == d.codigo && nota == d.nota && Objects.equals(designacao, d.designacao);
+        }else
+            return false;
+    }
 
+    public Object clone(){
+        Disciplina copia = new Disciplina(this.codigo,this.designacao);
+        copia.nota = this.nota;
+
+        return copia;
+    }
+
+    public Disciplina(Disciplina original) {
+        this.codigo = original.codigo;
+        this.designacao = original.designacao;
+        this.nota = original.nota;
+    }
 }
